@@ -29,7 +29,7 @@ export function ExploreCollectionsCarousel({ exploreCollections }: { exploreColl
               className="basis-full min-[640px]:basis-1/2 min-[768px]:basis-1/3 min-[1024px]:basis-1/4"
             >
               <Link 
-                href={`/${product.slug}`}
+                href={`/collections/${product.slug}`}
                 className="flex-1"
               >
                 <div className="overflow-hidden h-[35vh] sm:h-[45vh] md:h-[50vh] lg:h-[60vh] relative">

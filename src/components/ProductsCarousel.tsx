@@ -9,10 +9,13 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from 'embla-carousel-autoplay'
 
+import Link from "next/link";
 import Image from "next/image";
 import { CarouselProps } from "@/types";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
+import { createSlug } from "@/utils";
+
 
 export function BestSellerCarousel({ productsArray }: { productsArray: CarouselProps[] }) {
   const options = {
@@ -35,7 +38,7 @@ export function BestSellerCarousel({ productsArray }: { productsArray: CarouselP
               key={product.id}
               className="basis-full min-[481px]:basis-1/2 min-[769px]:basis-1/3 min-[1024px]:basis-1/4 min-[1280px]:basis-1/5"
             >
-              <div className="flex-1">
+              <Link href={`/product/${createSlug(product?.category)}/${createSlug(product?.brand)}/${createSlug(product?.title)}/${product.id}`} className="flex-1">
                 <div className="overflow-hidden h-[35vh] sm:h-[45vh] relative">
                   <Image
                     src={product.url}
@@ -57,7 +60,7 @@ export function BestSellerCarousel({ productsArray }: { productsArray: CarouselP
                 }
                 <p className="mt-1.5 text-sm lg:text-base truncate">{product.title}</p>
                 <p className="mt-1.5 text-sm lg:text-base text-[#5366a5]">Rs. {product.price}.00</p>
-              </div>
+              </Link>
 
             </CarouselItem>
           ))

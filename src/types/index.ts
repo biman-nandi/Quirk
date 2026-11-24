@@ -44,4 +44,27 @@ export type CarouselProps = {
   title: string
   offer?: number
   price: number
+  brand: string
+  category: string
+}
+
+
+// Blogs
+export type BlogProps = {
+  id: number;
+  title: string;
+  slug: string;
+  excerpt: string;
+  qa: {
+    question: string,
+    answer: string
+  }[];
+  author: string;
+  authorAvatar: string;
+  category: string;
+  tags: string[];
+  coverImage: string;
+  readTime: number;
+  publishedAt: string;
+  featured: boolean;
 }

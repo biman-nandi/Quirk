@@ -4,11 +4,11 @@ export const footerData: FooterDataProps[] = [
   {
     heading: "Shop",
     links: [
-      { title: "SHOP ALL", slug: "/shop" },
-      { title: "MEN", slug: "/men" },
-      { title: "WOMEN", slug: "/women" },
-      { title: "KIDS", slug: "/kids" },
-      { title: "ACCESSORIES", slug: "/accessories" },
+      { title: "SHOP ALL", slug: "/collections" },
+      { title: "MEN", slug: "/collections/men" },
+      { title: "WOMEN", slug: "/collections/women" },
+      { title: "KIDS", slug: "//collectionskids" },
+      { title: "ACCESSORIES", slug: "/collections/accessories" },
     ],
   },
   {

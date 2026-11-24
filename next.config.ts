@@ -40,6 +40,18 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'finisterre.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'dummyimage.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.pravatar.cc',
+      },
     ],
   },
 };
