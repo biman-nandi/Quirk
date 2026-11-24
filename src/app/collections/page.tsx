@@ -3,7 +3,10 @@ import { FaStar } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import { collectionData } from "@/data/collectionData";
 import Link from "next/link";
-import { createSlug, formatedPrice } from "@/utils";
+import { createSlug, formatedPrice, formatedRating, discountedPercentage } from "@/utils";
+import { FaArrowDown } from "react-icons/fa";
+import { MdFavoriteBorder } from "react-icons/md";
+import CategoryFilters from '@/components/CategoryFilters'
 
 
 export default function CollectionPage() {
@@ -13,11 +16,15 @@ export default function CollectionPage() {
     <main className="px-3 sm:px-10 mt-15">
       <p className="uppercase mb-2 text-xs tracking-widest">Home</p>
 
-      {/* <h1 className="uppercase mb-15 text-4xl font-bold">{genderParams}</h1> */}
+      <h1 className="uppercase mb-15 text-4xl font-bold">Shop All</h1>
 
-      <div className="flex justify-between items-center">
+      <div>
+        <CategoryFilters />
+      </div>
+
+      {/* <div className="flex justify-between items-center"> */}
         {/* Mobile */}
-        <div className="sm:hidden">
+        {/* <div className="sm:hidden">
           <button
             // onClick={renderFilter}
             className="border px-4 py-3"
@@ -25,12 +32,14 @@ export default function CollectionPage() {
             Filters
             <IoChevronDown className={`ml-1 inline transition-transform duration-300`} />
           </button>
-        </div>
+        </div> */}
 
         {/* Desktop */}
-        <div
+        
+
+        {/* <div
           className="hidden sm:flex gap-4"
-        >
+        > */}
           {/* {
               gender.length > 1 &&
               <div
@@ -194,7 +203,7 @@ export default function CollectionPage() {
           {/* </div>
             } */}
 
-        </div>
+        {/* </div>
 
         <div
           className="relative items-end group"
@@ -204,7 +213,7 @@ export default function CollectionPage() {
           >
             Sort By
             <IoChevronDown className={`ml-1 inline transition-transform duration-300`} />
-          </button>
+          </button> */}
 
 
           {/* Sort By */}
@@ -221,8 +230,8 @@ export default function CollectionPage() {
                 </label>
               ))}
             </div> */}
-        </div>
-      </div>
+        {/* </div> */}
+      {/* </div> */}
 
       {/* <div className="mt-5 flex gap-2">
           {
@@ -238,35 +247,40 @@ export default function CollectionPage() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-10">
         {filteredProducts.map((product) => (
-          <Link
+          <div
             key={product.id}
-            href={`/product/${createSlug(product.category)}/${createSlug(product.brand)}/${createSlug(product.title)}/${product.id}`}
-            className="mb-5 cursor-pointer"
+            className="mb-5 cursor-pointer relative"
           >
-            <div className="aspect-3/4 overflow-hidden relative">
-              <img src={product.thumbnail} alt={product.title} className="h-full w-full object-contain bg-white" />
+            <Link href={`/product/${createSlug(product.category)}/${createSlug(product.brand)}/${createSlug(product.title)}/${product.id}`}
+            >
+              <div className="aspect-3/4 overflow-hidden relative">
+                <img src={product.thumbnail} alt={product.title} className="h-full w-full object-contain bg-white" />
 
-              <div className="flex items-baseline bg-gray-200 shadow-sm px-2 py-1 rounded-sm absolute z-50 bottom-2 left-2">
-                <p className="text-black">{product.rating_average}</p>
-                <FaStar className="text-green-700 ml-0.5" />
-                <p>&nbsp; | &nbsp;{product.rating_count}</p>
+                <div className="flex items-baseline bg-white/70 shadow-sm px-1 py-0.5 sm:px-2 sm:py-1 rounded-sm absolute z-40 bottom-2 left-2 text-xs sm:text-sm">
+                  <p className="text-black">{product.rating_average}</p>
+                  <FaStar className="text-green-700 ml-0.5" />
+                  <p><span className="mx-0.5">|</span> {formatedRating(product.rating_count)}</p>
+                </div>
               </div>
-            </div>
 
+              <div className="py-3">
+                <p className="font-semibold text-xs sm:text-sm">{product.brand}</p>
 
-            <div className="p-3">
-              <p className="font-semibold text-sm">{product.brand}</p>
+                <p className="truncate text-xs sm:text-sm text-gray-600">{product.title}</p>
 
-              <p className="truncate text-sm text-gray-600">{product.title}</p>
+                <div className="flex items-center text-xs 300:text-sm lg:text-base lg:tracking-wider gap-1 lg:gap-2 mt-1">
+                  <span className="font-semibold">{formatedPrice(product.price)}</span>
 
-              <div className="flex items-center gap-2 mt-1">
-                <span className="font-semibold text-sm">{formatedPrice(Math.floor(product.price))}</span>
-
-                <span className="text-gray-500 line-through text-xs">{formatedPrice(Math.floor((Number(product.discount_percentage) + 100) / 100 * product.price))}</span>
-                <span className="text-orange-400 inline ml-2 text-xs">{Math.floor(product.discount_percentage)}% OFF</span>
+                  <span className="text-gray-500 line-through">{formatedPrice(product.originalPrice)}</span>
+                  <span className="text-green-600 flex items-center tracking-wider"><FaArrowDown className="size-2.5 lg:size-3" /> {Math.floor(discountedPercentage(product.originalPrice, product.price))}%</span>
+                </div>
               </div>
+            </Link>
+
+            <div className="bg-white/70 shadow-sm p-1 sm:p-2 rounded-full absolute z-40 top-2 right-2">
+              <MdFavoriteBorder className="size-5 sm:size-6" />
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </main>

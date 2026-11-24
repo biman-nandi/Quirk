@@ -9,8 +9,6 @@ export const collectionData = [
     brand: "MF Retail",
     price: 870.00,
     originalPrice: 1487.00,
-    discount: "71% OFF",
-    discount_percentage: 71,
     thumbnail: "https://dummyimage.com/300x400/4a90d9/ffffff&text=Girls+Maxi+Dress",
     images: [
       "https://dummyimage.com/300x400/4a90d9/ffffff&text=Girls+Maxi+Dress+1",
@@ -31,8 +29,6 @@ export const collectionData = [
     brand: "Allen Solly",
     price: 1561.00,
     originalPrice: 1763.00,
-    discount: "13% OFF",
-    discount_percentage: 13,
     thumbnail: "https://dummyimage.com/300x400/2c3e50/ffffff&text=Boys+Striped+Shirt",
     images: [
       "https://dummyimage.com/300x400/2c3e50/ffffff&text=Boys+Striped+Shirt+1",
@@ -52,8 +48,6 @@ export const collectionData = [
     brand: "Anula",
     price: 4199.00,
     originalPrice: 6592.00,
-    discount: "57% OFF",
-    discount_percentage: 57,
     thumbnail: "https://dummyimage.com/300x400/d4a017/ffffff&text=Banarasi+Saree",
     images: [
       "https://dummyimage.com/300x400/d4a017/ffffff&text=Banarasi+Saree+1",
@@ -74,8 +68,6 @@ export const collectionData = [
     brand: "U.S. POLO ASSN.",
     price: 3439.00,
     originalPrice: 4264.00,
-    discount: "24% OFF",
-    discount_percentage: 24,
     thumbnail: "https://dummyimage.com/300x400/1a1a2e/ffffff&text=Formal+Shirt",
     images: [
       "https://dummyimage.com/300x400/1a1a2e/ffffff&text=Formal+Shirt+1",
@@ -95,8 +87,6 @@ export const collectionData = [
     brand: "Apple",
     price: 78900.00,
     originalPrice: 82845.00,
-    discount: "5% OFF",
-    discount_percentage: 5,
     thumbnail: "https://dummyimage.com/300x400/333333/ffffff&text=iPhone+17",
     images: [
       "https://dummyimage.com/300x400/333333/ffffff&text=iPhone+17+1",
@@ -117,8 +107,6 @@ export const collectionData = [
     brand: "Nike",
     price: 5397.00,
     originalPrice: 8095.00,
-    discount: "50% OFF",
-    discount_percentage: 50,
     thumbnail: "https://dummyimage.com/300x400/e74c3c/ffffff&text=Air+Max+Dawn",
     images: [
       "https://dummyimage.com/300x400/e74c3c/ffffff&text=Air+Max+Dawn+1",
@@ -139,8 +127,6 @@ export const collectionData = [
     brand: "Titan",
     price: 7914.00,
     originalPrice: 8705.00,
-    discount: "10% OFF",
-    discount_percentage: 10,
     thumbnail: "https://dummyimage.com/300x400/000000/ffffff&text=Titan+Watch",
     images: [
       "https://dummyimage.com/300x400/000000/ffffff&text=Titan+Watch+1",
@@ -160,8 +146,6 @@ export const collectionData = [
     brand: "Apple",
     price: 152990.00,
     originalPrice: 159109.00,
-    discount: "4% OFF",
-    discount_percentage: 4,
     thumbnail: "https://dummyimage.com/300x400/c0c0c0/333333&text=MacBook+Air",
     images: [
       "https://dummyimage.com/300x400/c0c0c0/333333&text=MacBook+Air+1",
@@ -182,8 +166,6 @@ export const collectionData = [
     brand: "Essence",
     price: 380.00,
     originalPrice: 419.00,
-    discount: "10% OFF",
-    discount_percentage: 10,
     thumbnail: "https://dummyimage.com/300x400/8e44ad/ffffff&text=Lash+Princess",
     images: [
       "https://dummyimage.com/300x400/8e44ad/ffffff&text=Lash+Princess+1",
@@ -195,5 +177,26 @@ export const collectionData = [
     ],
     category: "mascara",
     description: "Essence Mascara Lash Princess provides dramatic volume and length for a bold lash look. The special brush separates each lash for a clump-free, long-lasting finish."
+  },
+  {
+    id: 10,
+    title: "Body Lace Non Wired Total Support Bra",
+    rating: 4,
+    rating_average: 4,
+    reviews: 120,
+    rating_count: 15,
+    brand: "Marks & Spencer",
+    price: 1199,
+    originalPrice: 1999,
+    thumbnail: "https://assets.myntassets.com/w_352,q_50,,dpr_3,fl_progressive,f_webp/assets/images/2026/AUGUST/31/dd5cf02b5a77448f82635c791aeef7e7.jpg",
+    images: [
+      "https://assets.myntassets.com/w_352,q_50,,dpr_3,fl_progressive,f_webp/assets/images/2026/AUGUST/31/dd5cf02b5a77448f82635c791aeef7e7.jpg",
+      "https://assets.myntassets.com/f_webp,fl_progressive/w_352,q_50,,dpr_3,fl_progressive,f_webp/assets/images/2026/AUGUST/31/1ca72a4ad7a744f591f29f3fb1cb0a93.jpg",
+      "https://assets.myntassets.com/f_webp,fl_progressive/w_352,q_50,,dpr_3,fl_progressive,f_webp/assets/images/2026/AUGUST/31/7601e9dcff96432c98953a44be240d52.jpg",
+      "https://assets.myntassets.com/f_webp,fl_progressive/w_352,q_50,,dpr_3,fl_progressive,f_webp/assets/images/2026/AUGUST/31/5b56662267934367910ce2cb14d2bd89.jpg",
+      "https://assets.myntassets.com/f_webp,fl_progressive/w_352,q_50,,dpr_3,fl_progressive,f_webp/assets/images/2026/AUGUST/31/95002e8813634292bfd10159dd520d3f.jpg"
+    ],
+    category: "bra",
+    description: "An animal lace design lends a pretty touch to this full cup bra from our body range. it offers total support for a fuller bust, with non-wired, non-padded cups for a natural shape. smooth edges and bonded side wings give a flat finish under clothes, effortlessly creating a sleek silhouette."
   }
 ]
