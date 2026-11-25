@@ -23,7 +23,7 @@ export default function ProductGalleryDesk({ productImages }: { productImages: s
   }
 
   useEffect(() => {
-    if (!open)  return
+    if (!open) return
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
     document.addEventListener("keydown", onKey)
     const prev = document.body.style.overflow
@@ -38,9 +38,9 @@ export default function ProductGalleryDesk({ productImages }: { productImages: s
   return (
     <div className="hidden md:grid grid-cols-2 w-full md:w-[60%] gap-5">
       {productImages?.slice(0, 4).map((img, idx) => (
-        <button 
+        <button
           type="button"
-          key={img} 
+          key={img}
           onClick={() => openAt(idx)}
           className="h-75 lg:h-100 w-full relative"
         >
@@ -61,13 +61,16 @@ export default function ProductGalleryDesk({ productImages }: { productImages: s
 
       {
         open && (
-          <div className="
-            hidden md:block
-            fixed
-            inset-0
-            z-50
-            bg-white
-          ">
+          <div
+            className="
+              hidden 
+              md:block
+              fixed
+              inset-0
+              z-50
+              bg-white
+            "
+          >
             <IoMdCloseCircleOutline
               onClick={() => setOpen(false)}
               className="text-3xl absolute right-10 top-10 cursor-pointer z-50"

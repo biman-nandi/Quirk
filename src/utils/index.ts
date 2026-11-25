@@ -1,3 +1,6 @@
+import { ProductsProps } from "@/types"
+
+
 export const createSlug = (field: string) => {
   return field
     .toLowerCase()
@@ -70,4 +73,50 @@ export function serializeFilters(filters: Record<string, string[]>): string {
     .filter(([, values]) => values.length > 0)
     .map(([key, value]) => `${key}:${value.join(",")}`)
     .join("::")
+}
+
+
+const brandSlug = (brand: string) =>
+  brand
+    .toLowerCase()
+    .replace(/&/g, "")
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+
+const matchers: Record<string, (p: ProductsProps, values: string[]) => boolean> = {
+  categories: (p, values) => values.includes(p.category),
+
+  brands: (p, values) => values.includes(brandSlug(p.brand)),
+
+  // "500-1000" or "10000+"
+  priceRanges: (p, values) =>
+    values.some((v) => {
+      if (v.endsWith("+")) return p.price >= Number(v.slice(0, -1))
+      const [min, max] = v.split("-").map(Number)
+      return p.price >= min && p.price < max
+    }),
+
+  // "4+" -> 4 and above
+  ratings: (p, values) =>
+    values.some((v) => p.rating_average >= parseFloat(v)),
+
+  // "25+" -> 25% and above
+  discounts: (p, values) =>
+    values.some((v) => discountedPercentage(p.originalPrice, p.price) >= parseFloat(v)),
+
+  // no stock field on products yet, so every product counts as in stock
+  availability: (_p, values) => values.includes("in-stock"),
+}
+
+export function filterProducts(
+  products: ProductsProps[],
+  filters: Record<string, string[]>
+): ProductsProps[] {
+  return products.filter((product) =>
+    Object.entries(filters).every(([category, values]) => {
+      const match = matchers[category]
+      return match ? match(product, values) : true
+    })
+  )
 }

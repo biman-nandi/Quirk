@@ -1,4 +1,6 @@
-export const collectionData = [
+import { ProductsProps } from "@/types"
+
+export const collectionData: ProductsProps[] = [
   {
     id: 1,
     title: "MF Retail Girls Maxi/Full Length Festive/Wedding Dress (Blue, Half Sleeve)",

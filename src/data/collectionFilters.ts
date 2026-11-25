@@ -51,4 +51,13 @@ export const collectionFilters = {
     { label: "In Stock", value: "in-stock", count: 10 },
     { label: "Out of Stock", value: "out-of-stock", count: 0 },
   ],
+
+  sort: [
+    { label: "Relevance", value: "relevance" },
+    { label: "Popularity", value: "popularity" },
+    { label: "Newest First", value: "newest" },
+    { label: "Price: Low to High", value: "price-asc", sortBy: "price", order: "asc" },
+    { label: "Price: High to Low", value: "price-desc", sortBy: "price", order: "desc" },
+    { label: "Rating: High to Low", value: "rating-desc", sortBy: "rating", order: "desc" }
+  ]
 };

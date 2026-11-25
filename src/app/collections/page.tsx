@@ -1,16 +1,21 @@
-import { IoChevronDown } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
-import { RxCross2 } from "react-icons/rx";
 import { collectionData } from "@/data/collectionData";
 import Link from "next/link";
-import { createSlug, formatedPrice, formatedRating, discountedPercentage } from "@/utils";
+import { createSlug, formatedPrice, formatedRating, discountedPercentage, parseFilters, filterProducts } from "@/utils";
 import { FaArrowDown } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import CategoryFilters from '@/components/CategoryFilters'
+import { Suspense } from 'react'
 
 
-export default function CollectionPage() {
-  const filteredProducts = collectionData
+export default async function CollectionPage({
+  searchParams
+}: {
+  searchParams: Promise<{ f?: string }>
+}) {
+  const { f } = await searchParams
+  const filters = parseFilters(f ?? null)
+  const filteredProducts = filterProducts(collectionData, filters)
 
   return (
     <main className="px-3 sm:px-10 mt-15">
@@ -18,234 +23,12 @@ export default function CollectionPage() {
 
       <h1 className="uppercase mb-15 text-4xl font-bold">Shop All</h1>
 
-      <div>
+      <Suspense fallback={null}>
         <CategoryFilters />
-      </div>
+      </Suspense>
 
-      {/* <div className="flex justify-between items-center"> */}
-        {/* Mobile */}
-        {/* <div className="sm:hidden">
-          <button
-            // onClick={renderFilter}
-            className="border px-4 py-3"
-          >
-            Filters
-            <IoChevronDown className={`ml-1 inline transition-transform duration-300`} />
-          </button>
-        </div> */}
-
-        {/* Desktop */}
-        
-
-        {/* <div
-          className="hidden sm:flex gap-4"
-        > */}
-          {/* {
-              gender.length > 1 &&
-              <div
-                className="relative"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  onClick={() => setActiveFilter(activeFilter === "gender" ? null : "gender")}
-                  className="border px-4 py-3"
-                >
-                  Gender
-                  <IoChevronDown className={`ml-1 inline transition-transform duration-300 ${activeFilter === "gender" ? "rotate-180" : "rotate-0"}`} />
-                </button>
-
-                {activeFilter === "gender" &&
-                  <div className="border flex bg-white p-4 mt-2 flex-col absolute left-0 z-50 h-41 overflow-y-auto">
-                    {gender.map(ele => (
-                      <label key={ele} className="flex items-center my-1">
-                        <input
-                          type="checkbox"
-                          onChange={() => toogleFilter("gender", ele)}
-                          checked={filters.gender.includes(ele)}
-                          className="appearance-none w-4 h-4 border checked:bg-black cursor-pointer"
-                        />
-                        <p className="tracking-tighter pl-2 cursor-pointer">{ele}</p>
-                      </label>
-                    ))}
-                  </div>
-                }
-              </div>
-            } */}
-
-          {/* Category */}
-          {/* {
-              category.length > 1 &&
-              <div
-                className="relative"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  onClick={() => setActiveFilter(activeFilter === "category" ? null : "category")}
-                  className="border px-4 py-3"
-                >
-                  Category
-                  <IoChevronDown className={`ml-1 inline transition-transform duration-300 ${activeFilter === "category" ? "rotate-180" : "rotate-0"}`} />
-                </button> */}
-
-          {/* {activeFilter === "category" &&
-                  <div className="border flex bg-white p-4 mt-2 flex-col absolute left-0 z-50 max-h-70 overflow-y-auto">
-                    {category.map(ele => (
-                      <label key={ele} className="flex items-center my-1">
-                        <input
-                          type="checkbox"
-                          onChange={() => toogleFilter("category", ele)}
-                          checked={filters.category.includes(ele)}
-                          className="appearance-none w-4 h-4 border checked:bg-black cursor-pointer"
-                        />
-                        <p className="tracking-tighter pl-2 cursor-pointer whitespace-nowrap">{ele}</p>
-                      </label>
-                    ))}
-                  </div>
-                }
-              </div>
-            } */}
-
-          {/* Brand */}
-          {/* {
-              brand.length > 1 &&
-              <div
-                className="relative"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  onClick={() => setActiveFilter(activeFilter === "brand" ? null : "brand")}
-                  className="border px-4 py-3"
-                >
-                  Brand
-                  <IoChevronDown className={`ml-1 inline transition-transform duration-300 ${activeFilter === "brand" ? "rotate-180" : "rotate-0"}`} />
-                </button>
-
-                {activeFilter === "brand" &&
-                  <div className="border flex bg-white p-4 mt-2 flex-col absolute left-0 z-50 max-h-70 overflow-y-auto">
-                    {brand.map(ele => (
-                      <label key={ele} className="flex items-center my-1">
-                        <input
-                          type="checkbox"
-                          onChange={() => toogleFilter("brand", ele)}
-                          checked={filters.brand.includes(ele)}
-                          className="appearance-none w-4 h-4 border checked:bg-black cursor-pointer"
-                        />
-                        <p className="tracking-tighter pl-2 cursor-pointer whitespace-nowrap">{ele}</p>
-                      </label>
-                    ))}
-                  </div>
-                }
-              </div>
-            } */}
-
-          {/* Size */}
-          {/* {
-              size.length > 1 &&
-              <div
-                className="relative"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  onClick={() => setActiveFilter(activeFilter === "size" ? null : "size")}
-                  className="border px-4 py-3"
-                >
-                  Size
-                  <IoChevronDown className={`ml-1 inline transition-transform duration-300 ${activeFilter === "size" ? "rotate-180" : "rotate-0"}`} />
-                </button>
-
-                {activeFilter === "size" &&
-                  <div className="border flex bg-white p-4 mt-2 flex-col absolute left-0 z-50">
-                    {size.map(ele => (
-                      <label key={ele} className="flex items-center my-1">
-                        <input
-                          type="checkbox"
-                          onChange={() => toogleFilter("size", ele)}
-                          checked={filters.size.includes(ele)}
-                          className="appearance-none w-4 h-4 border checked:bg-black cursor-pointer"
-                        />
-                        <p className="tracking-tighter pl-2 cursor-pointer whitespace-nowrap">{ele}</p>
-                      </label>
-                    ))}
-                  </div>
-                }
-              </div>
-            } */}
-
-          {/* {
-              color.length > 1 &&
-              <div
-                className="relative"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  onClick={() => setActiveFilter(activeFilter === "color" ? null : "color")}
-                  className="border px-4 py-3"
-                >
-                  Color */}
-          {/* <IoChevronDown className={`ml-1 inline transition-transform duration-300 ${activeFilter === "color" ? "rotate-180" : "rotate-0"}`} /> */}
-          {/* </button> */}
-
-          {/* {activeFilter === "color" &&
-                  <div className="border flex bg-white p-4 mt-2 flex-col absolute left-0 z-50">
-                    {color.map(ele => (
-                      <label key={ele} className="flex items-center my-1">
-                        <input
-                          type="checkbox"
-                          onChange={() => toogleFilter("color", ele)}
-                          checked={filters.color.includes(ele)}
-                          className="appearance-none w-4 h-4 border checked:bg-black cursor-pointer"
-                        />
-                        <p className="tracking-tighter pl-2 cursor-pointer whitespace-nowrap">{ele}</p>
-                      </label>
-                    ))}
-                  </div>
-                } */}
-          {/* </div>
-            } */}
-
-        {/* </div>
-
-        <div
-          className="relative items-end group"
-        >
-          <button
-            className="border px-4 py-3"
-          >
-            Sort By
-            <IoChevronDown className={`ml-1 inline transition-transform duration-300`} />
-          </button> */}
-
-
-          {/* Sort By */}
-          {/* <div className="hidden border group-hover:flex bg-white p-4 mt-2 flex-col absolute right-0 z-50">
-              {sort.map(ele => (
-                <label key={ele} className="flex items-center my-1">
-                  <input
-                    type="radio"
-                    checked={filters.sort === ele}
-                    onChange={() => handleSortChange(ele)}
-                    className="appearance-none w-4 h-4 border checked:bg-black cursor-pointer"
-                  />
-                  <p className="tracking-tighter pl-2 cursor-pointer whitespace-nowrap">{ele}</p>
-                </label>
-              ))}
-            </div> */}
-        {/* </div> */}
-      {/* </div> */}
-
-      {/* <div className="mt-5 flex gap-2">
-          {
-            Object.entries(filters).map(([key, value]) => {
-              if (!Array.isArray(value)) return null;
-
-              return value.map(item => (
-                <p key={`${key}-${item}`} className="bg-black text-white p-1">{item}<RxCross2 onClick={(() => toogleFilter(key, item))} className="inline" /></p>
-              ))
-            })
-          }
-        </div> */}
-
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-10">
+      
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2.5 md:gap-5 mt-10">
         {filteredProducts.map((product) => (
           <div
             key={product.id}
@@ -268,11 +51,11 @@ export default function CollectionPage() {
 
                 <p className="truncate text-xs sm:text-sm text-gray-600">{product.title}</p>
 
-                <div className="flex items-center text-xs 300:text-sm lg:text-base lg:tracking-wider gap-1 lg:gap-2 mt-1">
+                <div className="flex flex-wrap items-center text-xs 300:text-sm lg:text-base lg:tracking-wider gap-1 lg:gap-2 mt-1">
                   <span className="font-semibold">{formatedPrice(product.price)}</span>
 
                   <span className="text-gray-500 line-through">{formatedPrice(product.originalPrice)}</span>
-                  <span className="text-green-600 flex items-center tracking-wider"><FaArrowDown className="size-2.5 lg:size-3" /> {Math.floor(discountedPercentage(product.originalPrice, product.price))}%</span>
+                  <span className="text-green-600 flex items-center tracking-wider"><FaArrowDown className="size-2 lg:size-3" /> {Math.floor(discountedPercentage(product.originalPrice, product.price))}%</span>
                 </div>
               </div>
             </Link>

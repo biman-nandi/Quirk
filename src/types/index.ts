@@ -49,6 +49,24 @@ export type CarouselProps = {
 }
 
 
+// products Data
+export type ProductsProps = {
+  id: number,
+  title: string,
+  rating: number,
+  rating_average: number,
+  reviews: number,
+  rating_count: number,
+  brand: string,
+  price: number,
+  originalPrice: number,
+  thumbnail: string,
+  images: string[],
+  category: string,
+  description: string
+}
+
+
 // Blogs
 export type BlogProps = {
   id: number;
