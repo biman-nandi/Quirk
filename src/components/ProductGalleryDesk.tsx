@@ -17,6 +17,8 @@ export default function ProductGalleryDesk({ productImages }: { productImages: s
   const [open, setOpen] = useState<boolean>(false)
   const [startIndex, setStartIndex] = useState<number>(0)
 
+  const extras = productImages?.length - 4
+
   const openAt = (idx: number) => {
     setOpen(true)
     setStartIndex(idx)
@@ -36,25 +38,25 @@ export default function ProductGalleryDesk({ productImages }: { productImages: s
   }, [open])
 
   return (
-    <div className="hidden md:grid grid-cols-2 w-full md:w-[60%] gap-5">
+    <div className="hidden md:grid grid-cols-2 w-full md:w-[60%] gap-5 self-start sticky top-5">
       {productImages?.slice(0, 4).map((img, idx) => (
         <button
           type="button"
-          key={img}
+          key={idx}
           onClick={() => openAt(idx)}
           className="h-75 lg:h-100 w-full relative"
         >
           <Image
             src={img}
-            alt={`Product image ${idx}`}
+            alt={`Product image ${idx + 1}`}
             fill
             loading='eager'
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 30vw"
             className="bg-white cursor-pointer object-contain rounded p-2"
           />
 
-          <div className={`${idx < 3 && "hidden"} absolute inset-0 text-2xl flex justify-center items-center bg-black/50 rounded text-white font-bold cursor-pointer`}>
-            +{productImages?.length - 4}
+          <div className={`${(idx < 3 || (idx === 3 && extras < 1)) && "hidden"} absolute inset-0 text-2xl flex justify-center items-center bg-black/50 rounded text-white font-bold cursor-pointer`}>
+            +{extras}
           </div>
         </button>
       ))}

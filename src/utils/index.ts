@@ -25,6 +25,14 @@ export const formatedDate = (publishedAt: string) => {
   }).format(date)
 }
 
+export const formatedFullDate = (date: string) => {
+  return new Date(date).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  })
+}
+
 export const formatedRating = (rating: number) => {
   if (rating < 1000)
     return `${rating}`

@@ -55,7 +55,7 @@ export type ProductsProps = {
   title: string,
   rating: number,
   rating_average: number,
-  reviews: number,
+  review_count: number,
   rating_count: number,
   brand: string,
   price: number,
@@ -64,6 +64,22 @@ export type ProductsProps = {
   images: string[],
   category: string,
   description: string
+  discount_percentage: number
+  shipping_information: string
+  cod_available: string
+  return_policy: string
+  highlights: string[]
+  specifications: {
+    label: string
+    value: string
+  }[]
+  reviews: {
+    rating: number,
+    comment: string,
+    reviewerName: string,
+    reviewerEmail: string,
+    date: string
+  }[]
 }
 
 
