@@ -1,11 +1,11 @@
-import { FaStar } from "react-icons/fa";
 import { collectionData } from "@/data/collectionData";
 import Link from "next/link";
 import { createSlug, formatedPrice, formatedRating, discountedPercentage, parseFilters, filterProducts } from "@/utils";
-import { FaArrowDown } from "react-icons/fa";
+import { FaArrowDown, FaStar } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import CategoryFilters from '@/components/CategoryFilters'
 import { Suspense } from 'react'
+import Image from "next/image";
 
 export default async function CategoryPage(
   {
@@ -42,7 +42,13 @@ export default async function CategoryPage(
             <Link href={`/product/${createSlug(product.category)}/${createSlug(product.brand)}/${createSlug(product.title)}/${product.id}`}
             >
               <div className="aspect-3/4 overflow-hidden relative">
-                <img src={product.thumbnail} alt={product.title} className="h-full w-full object-contain bg-white" />
+                <Image
+                  src={product.thumbnail}
+                  alt={product.title}
+                  fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 20vw"
+                  className="object-cover bg-white"
+                />
 
                 <div className="flex items-baseline bg-white/70 shadow-sm px-1 py-0.5 sm:px-2 sm:py-1 rounded-sm absolute z-40 bottom-2 left-2 text-xs sm:text-sm">
                   <p className="text-black">{product.rating_average}</p>
@@ -60,7 +66,7 @@ export default async function CategoryPage(
                   <span className="font-semibold">{formatedPrice(product.price)}</span>
 
                   <span className="text-gray-500 line-through">{formatedPrice(product.originalPrice)}</span>
-                  <span className="text-green-600 flex items-center tracking-wider"><FaArrowDown className="size-2 lg:size-3" /> {Math.floor(discountedPercentage(product.originalPrice, product.price))}%</span>
+                  <span className="text-discount flex items-center tracking-wider"><FaArrowDown className="size-2 lg:size-3" /> {Math.floor(discountedPercentage(product.originalPrice, product.price))}%</span>
                 </div>
               </div>
             </Link>

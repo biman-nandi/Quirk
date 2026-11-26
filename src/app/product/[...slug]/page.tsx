@@ -139,7 +139,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </span>
             </span>
 
-            <span className="text-green-600 font-semibold inline text-base lg:text-xl">
+            <span className="text-discount font-semibold inline text-base lg:text-xl">
               ({Math.floor(filteredProduct?.discount_percentage!)}% OFF)
             </span>
           </div>
@@ -148,7 +148,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
           {/* Add to Cart & Wishlist btn */}
           <div className="flex gap-3 mt-5 mb-7 font-semibold">
-            <button className="w-[50%] flex justify-center items-center gap-2 bg-[#121212] text-white text-xs sm:text-base hover:bg-gray-400 hover:text-black cursor-pointer rounded-sm transition-all duration-300 hover:scale-[1.02]">
+            <button className="w-[50%] flex justify-center items-center gap-2 bg-brand text-white text-xs sm:text-base cursor-pointer rounded-sm transition-all duration-300 hover:scale-[1.02]">
               < MdOutlineShoppingBag /> {true ? "ADD TO CART" : <span>GO TO CART</span>}
             </button>
 

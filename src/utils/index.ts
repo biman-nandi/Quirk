@@ -42,7 +42,7 @@ export const formatedRating = (rating: number) => {
 
 export const discountedPercentage = (originalPrice: number, price: number) => {
   const totalDiscount = originalPrice - price
-  return (totalDiscount * 100) / originalPrice
+  return Math.floor((totalDiscount * 100) / originalPrice)
 }
 
 export const formatedPrice = (amount: number) => {
