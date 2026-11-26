@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import localFont from 'next/font/local'
 import { Arvo, Sanchez } from "next/font/google";
 import { cn } from "@/lib/utils";
@@ -42,11 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={cn(helveticaNeue.className, agravePro.variable, "font-sans", arvo.variable, sanchez.variable)}
     >
       <body>
-        <Navbar />
-
         {children}
-
-        <Footer />
       </body>
     </html>
   );

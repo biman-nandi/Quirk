@@ -84,11 +84,11 @@ export default function Home() {
         <picture className="absolute h-full w-full block">
           <source
             media="(max-width: 768px)"
-            srcSet="/sale-banner.png"
+            srcSet="/images/sale-banner.png"
           />
 
           <Image
-            src="/sale-banner-desktop.png"
+            src="/images/sale-banner-desktop.png"
             alt="Sale banner desktop"
             fill
             loading="eager"

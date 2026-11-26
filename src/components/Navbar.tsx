@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image";
 import { IoSearchSharp } from "react-icons/io5";
 import { MdFavoriteBorder, MdOutlineShoppingBag } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
@@ -7,7 +8,7 @@ import MegaMenu from '@/components/MegaMenu'
 import { MenuDataProps } from "@/types";
 
 
-export default function() {
+export default function NavBar() {
   return (
     <header className="bg-[#f1f1f1] shadow-md shadow-gray-300">
       <nav className="flex justify-around items-center">
@@ -23,17 +24,13 @@ export default function() {
             <g mask="url(#mask0_1943_854)"> <path d="M4 17.2692V16.2692H15V17.2692H4ZM4 12.5V11.5H20V12.5H4ZM4 7.73071V6.73071H20V7.73071H4Z" fill="#121212"></path> </g> </svg>
 
           <Link href="/">
-            <h1
-              className="
-                font-(family-name:--font-agrave-pro)
-                text-black
-                text-xl 
-                sm:text-4xl 
-                cursor-pointer
-              "
-            >
-              Quirk
-            </h1>
+            <Image 
+              src="/logo.png" 
+              alt="Quirk-logo" 
+              width={120}
+              height={120}
+              className="w-auto"
+            />
           </Link>
 
 
