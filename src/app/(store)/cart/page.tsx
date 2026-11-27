@@ -10,7 +10,7 @@ export default function CartPage() {
   const checkoutPrice = cartProducts.reduce((sum, item) => sum + item.price, 0)
 
   return (
-    <main className="px-3 sm:px-10 mt-15">
+    <main className="px-3 sm:px-10 my-15">
       <div className="border-b pb-10 mb-4.5 w-full flex justify-between items-center">
         <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl w-fit relative font-bold">
           YOUR BAG
@@ -21,7 +21,7 @@ export default function CartPage() {
       </div>
 
       {
-        true
+        cartProducts.length > 0
           ?
           <div className="md:flex justify-between">
             <div className="md:w-[65%]">
@@ -125,7 +125,7 @@ export default function CartPage() {
             <Link href='/'>
               <button
                 type="button"
-                className="mt-6 bg-black cursor-pointer hover:scale-[1.02] transition-all duration-300 text-white px-6 py-3"
+                className="mt-6 bg-brand cursor-pointer hover:scale-[1.02] transition-all duration-300 text-white px-6 py-3"
               >
                 CONTINUE SHOPPING
               </button>

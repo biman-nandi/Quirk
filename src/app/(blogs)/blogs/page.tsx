@@ -6,7 +6,7 @@ import { formatedDate } from "@/utils";
 
 export default function BlogPage() {
     return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 902:grid-cols-3 1192:grid-cols-4 1679:grid-cols-5 2120:grid-cols-6 justify-items-center gap-3 sm:mt-5 sm:px-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 902:grid-cols-3 1192:grid-cols-4 1679:grid-cols-5 2120:grid-cols-6 justify-items-center gap-3 sm:mt-5 sm:px-5 mb-15">
       {
         blogsData.map(blog => (
           <div key={blog.id} className="w-full max-w-100 min-h-125 sm:border border-gray-300 rounded-md p-7">

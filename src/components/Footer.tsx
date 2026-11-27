@@ -4,7 +4,7 @@ import BackToTop from "./BackToTop";
 
 export default function Footer() {
   return (
-    <div className="mt-20 py-10 px-2 md:px-5 lg:px-20 bg-[#121212] grid lg:grid-cols-5 text-white relative gap-4">
+    <div className="py-10 px-2 md:px-5 lg:px-20 bg-[#121212] grid lg:grid-cols-5 text-white relative gap-4">
       <div>
         <h5 className="uppercase text-2xl pb-4">subscribe to trenz</h5>
         <p className="pb-5 text-sm">Unlock first access to product launches, community events, giveaways and exclusive offers.</p>

@@ -35,7 +35,7 @@ export default async function SelectedBlogPage({
     return <div>Blog not found</div>
 
   return (
-    <div className="mt-5 px-3 sm:px-5 md:px-[5%] font-(family-name:--font-sanchez)">
+    <div className="mt-10 mb-15 px-3 sm:px-5 md:px-[5%] font-(family-name:--font-sanchez)">
       <p className="uppercase mb-4 sm:mb-8 text-xs tracking-widest">
         <Link href='/blogs' className="hover:underline">Blog</Link>
         {' > '}

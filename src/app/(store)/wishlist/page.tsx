@@ -11,8 +11,8 @@ export default function WishlistPage() {
     <div>
 
       {
-        filteredProduct && (
-          <main className="px-3 sm:px-10 mt-15">
+        filteredProduct.length > 0 ? (
+          <main className="px-3 sm:px-10 my-15">
             <h1 className="font-bold text-lg tracking-wider">
               My WishList <span className="font-normal ml-2">{filteredProduct.length} items</span>
             </h1>
@@ -60,7 +60,19 @@ export default function WishlistPage() {
               </div>
             }
           </main>
-        )
+        ) :
+          <main className="py-20 text-center">
+            <h2 className="text-xl font-semibold">Your wishlist is empty</h2>
+            <p className="mt-2 text-gray-500">
+              Save your favorite products here and find them whenever you need them.
+            </p>
+            <Link
+              href="/collections"
+              className="inline-block mt-5 bg-brand text-white px-6 py-3 rounded font-semibold"
+            >
+              EXPLORE PRODUCTS
+            </Link>
+          </main>
       }
     </div>
   );

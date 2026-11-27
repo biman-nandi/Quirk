@@ -7,6 +7,7 @@ import ProductGalleryDesk from "@/components/ProductGalleryDesk";
 import { TbTruckDelivery } from "react-icons/tb";
 import { RiExchangeLine, RiFileList3Line } from "react-icons/ri";
 import { formatedFullDate } from "@/utils";
+import { notFound } from "next/navigation";
 
 
 
@@ -24,12 +25,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   }
 
   if (!filteredProduct) {
-    return <div>Product not found</div>
+    notFound()
   }
 
 
   return (
-    <div className="relative">
+    <div className="relative mb-15">
       <main className="md:flex gap-8 px-3 sm:px-10 mt-5">
 
         {/* Mobile screen Images */}

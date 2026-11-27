@@ -4,7 +4,7 @@ import { RiEditBoxFill } from "react-icons/ri";
 
 export default function ProfilePage() {
   return (
-    <main className="mt-15 grid grid-cols-3 gap-10 px-[10vw] lg:px-[15vw]">
+    <main className="my-15 grid grid-cols-3 gap-10 px-[10vw] lg:px-[15vw]">
       <ul className="col-span-1">
         <li>
           <Link href='/profile' className="block px-3 py-2 my-3 hover:bg-[#121212] hover:text-white text-lg rounded-2xl cursor-pointer border border-black">
